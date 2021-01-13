@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     let addBtn = document.querySelector('#addBtn');
-    let table = document.querySelector('table');
 
     let nameInp = document.querySelector('#name');
     let emailInp = document.querySelector('#email');
@@ -57,11 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
             address,
             phone
         }
+
         allEmployess.push(employee)
         window.localStorage.setItem('user', JSON.stringify(allEmployess));
 
 
-        renderTemplates(employee, table)
+        renderTemplates(employee)
 
 
     });
@@ -74,11 +74,21 @@ function renderTemplates(employee) {
 
     let template = `
     <tr>
-
+    <td>
+        <span class="custom-checkbox">
+                <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                <label for="checkbox1"></label>
+        </span>
+    </td>
     <td>${employee.name}</td>
     <td>${employee.email}</td>
     <td>${employee.address}</td>
     <td>${employee.phone}</td>
+    <td>
+        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+     </td>
+
     </tr>
 
     `
