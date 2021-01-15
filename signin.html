@@ -28,8 +28,8 @@
           document.querySelector('#inputPassword').placeholder="write a password"
         }
         else if(document.querySelector('#inputEmail').value!="" && document.querySelector('#inputPassword').value!=""){
-          localStorage.setItem('email',document.querySelector('#inputEmail').value);
-          localStorage.setItem('password',document.querySelector('#inputPassword').value);
+          let username = document.querySelector('#inputEmail').value.split("@").shift()
+          localStorage.setItem("username",username);
           redir();
         }
         

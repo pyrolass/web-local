@@ -2,14 +2,14 @@ const EmployeeForm = document.getElementById("AddEmployeeForm");
 const EditEmployee = document.getElementById("EditEmployee");
 let allEmployess = JSON.parse(window.localStorage.getItem('user')) || [];
 
-console.log(allEmployess)
 
 allEmployess.forEach(el => {
     renderTemplates(el);
 })
-
-
+document.querySelector("#username").innerHTML=localStorage.getItem("username")
 document.addEventListener('DOMContentLoaded', function () {
+
+    
     $(document).ready(function () {
         // Activate tooltip
         $('[data-toggle="tooltip"]').tooltip();
