@@ -1,7 +1,7 @@
 const EmployeeForm = document.getElementById("AddEmployeeForm");
 const EditEmployee = document.getElementById("EditEmployee");
 let allEmployess = JSON.parse(window.localStorage.getItem('user')) || [];
-
+let count =3;
 
 allEmployess.forEach(el => {
     renderTemplates(el);
@@ -37,15 +37,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let addBtn = document.querySelector('#addBtn');
 
+    let signOutBtn = document.querySelector('#signOutBtn');
+
     let nameInp = document.querySelector('#name');
     let emailInp = document.querySelector('#email');
-    let addressInp = document.querySelector('#address');
+
     let phoneInp = document.querySelector('#phone');
 
     addBtn.addEventListener('click', () => {
         let name = nameInp.value;
         let email = emailInp.value;
-        let address = addressInp.value;
         let phone = phoneInp.value;
 
 
@@ -53,18 +54,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const employee = {
             name,
             email,
-            address,
             phone
         }
 
         allEmployess.push(employee)
-        window.localStorage.setItem('user', JSON.stringify(allEmployess));
+        localStorage.setItem('user', JSON.stringify(allEmployess));
 
 
         renderTemplates(employee)
 
 
     });
+
+    signOutBtn.addEventListener('click', () => {
+        localStorage.clear();
+
+        });
 
 });
 
@@ -75,14 +80,10 @@ function renderTemplates(employee) {
     let template = `
     <tr>
     <td>
-        <span class="custom-checkbox">
-                <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                <label for="checkbox1"></label>
-        </span>
+        ${count}
     </td>
     <td>${employee.name}</td>
     <td>${employee.email}</td>
-    <td>${employee.address}</td>
     <td>${employee.phone}</td>
     <td>
         <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
