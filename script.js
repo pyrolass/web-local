@@ -6,15 +6,15 @@ allEmployess.forEach(el => {
 })
 
 
+function deleteThis(x){
+    x=index
+    document.querySelector('table').deleteRow(x);
+    }
 
 
 document.querySelector("#username").innerHTML=localStorage.getItem("username")
 document.addEventListener('DOMContentLoaded', function () {
 
-   
-
-
-    
     $(document).ready(function () {
         // Activate tooltip
         $('[data-toggle="tooltip"]').tooltip();
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let updateBtn = document.querySelector('#updateBtn');
     let addBtn = document.querySelector('#addBtn');
     let signOutBtn = document.querySelector('#signOutBtn');
-    let deleteBtn = document.querySelector('.deleteBtn')
+    let deleteBtn = document.querySelectorAll('.deleteBtn')
 
     let nameInp = document.querySelector('#name');
     let emailInp = document.querySelector('#email');
@@ -113,9 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
   event.preventDefault()
 });
 
-    document.querySelector().addEventListener("click",function(event){
-
-    });
+    
+    
 
 
 
@@ -137,9 +136,9 @@ function renderTemplates(employee) {
     <td>${employee.email}</td>
     <td>${employee.phone}</td>
     <td>
-        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-     </td>
+        <a href="#editEmployeeModal" class="editBtn" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+        <button id="deleteBtn" onclick='deleteThis(this)'data-toggle="modal"><i class="material-icons" title="Delete">&#xE872;</i></a>
+    </td>
 
     </tr>
 
